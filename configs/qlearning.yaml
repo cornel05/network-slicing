@@ -1,0 +1,42 @@
+# Q-learning hyperparameters and environment configuration.
+# These are conservative, beginner-friendly starting values.
+
+# --- Training ---
+episodes: 500            # Number of training episodes
+max_steps_per_episode: 200  # Max steps before truncating an episode
+seed: 42                 # Random seed for reproducibility
+
+# --- Q-learning ---
+alpha: 0.1               # Learning rate (step size)
+gamma: 0.95              # Discount factor for future rewards
+
+# --- Exploration (epsilon-greedy) ---
+epsilon_start: 1.0       # Start with full exploration
+epsilon_min: 0.05        # Never go below 5% random exploration
+epsilon_decay: 0.995     # Multiply epsilon by this each episode
+
+# --- Output ---
+q_table_path: "qtable_output.pkl"  # Where to save/load the Q-table
+
+# --- Environment ---
+# TODO: Verify the correct env_id by inspecting the original network-slicing repo.
+# The registered Gym ID is likely something like "ran-slicing-v0" or similar.
+# Run `python -c "import gym_ran_slice; print('ok')"` after installing the env.
+env_id: "ran-slicing-v0"   # PLACEHOLDER — update after installing original env
+
+# --- State discretization ---
+# Number of bins for each dimension of the raw observation vector.
+# Keep this small to keep the Q-table tractable.
+# TODO: Adjust num_bins and observation_bins after inspecting the actual
+#       observation space returned by the original environment.
+observation_bins: 5      # Bins per observation dimension (used if uniform binning)
+
+# --- Action space ---
+# Number of slices and maximum RBs per slice define the allocation problem.
+# TODO: Verify these values match the original environment's configuration.
+num_slices: 3            # Number of network slices
+max_rb_per_slice: 10     # Maximum resource blocks assignable to one slice
+
+# action_mode controls which ActionMapper strategy set to use.
+# "simple" uses a small hand-crafted set of allocation patterns.
+action_mode: "simple"

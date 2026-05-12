@@ -1,0 +1,27 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ran-slicing-qtable"
+version = "0.1.0"
+description = "Tabular Q-learning baseline for RAN network slicing resource allocation"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "numpy",
+    "pyyaml",
+    "tqdm",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ran_slicing_qtable"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/", "configs/", "scripts/", "notes/", "README.md"]
