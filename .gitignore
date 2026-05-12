@@ -216,3 +216,21 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Q-table output files
+*.pkl
+*.npy
+qtable_*.pkl
+q_table_*.pkl
+
+# Training logs
+logs/
+*.log
+
+# Local clone of the original network-slicing environment
+network-slicing/
+network_slicing_env/
+
+# uv lock / cache
+uv.lock
+.uv/
